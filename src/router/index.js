@@ -44,16 +44,6 @@ export const constantRoutes = [
     }]
   },
   {
-    path: '/login',
-    component: () => import('@/views/login/index'),
-    hidden: true
-  },
-  {
-    path: '/404',
-    component: () => import('@/views/404'),
-    hidden: true
-  },
-  {
     path: '/permisson',
     component: Layout,
     redirect: '/permisson/user',
@@ -97,7 +87,17 @@ export const constantRoutes = [
         meta: { title: '表格', icon: 'table' }
       }
     ]
-  }
+  },
+  {
+    path: '/login',
+    component: () => import('@/views/login/index'),
+    hidden: true
+  },
+  {
+    path: '/404',
+    component: () => import('@/views/404'),
+    hidden: true
+  },
 ]
 
 /**
