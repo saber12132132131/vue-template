@@ -1,0 +1,26 @@
+.my-link{
+    color: red;
+}
+.noHit{
+
+    text-align: center;
+    width: 60px;
+    margin-right: 120px;
+    height: 34px;
+    color: white;   
+    border-color: #f56c6c;
+    background-color: #f56c6c;
+    line-height: 34px;
+    border-radius: 4px;
+}
+.hit{
+    text-align: center;
+    width: 60px;
+    margin-right: 120px;
+    height: 34px;
+    color: white;   
+    border-color: #67c23a;
+    background-color: #67c23a;
+    line-height: 34px;
+    border-radius: 4px;
+}

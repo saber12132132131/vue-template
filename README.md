@@ -1,91 +1,97 @@
-# vue-admin-template
+[TOC]
 
-English | [简体中文](./README-zh.md)
+### 项目梳理
 
-> A minimal vue admin template with Element UI & axios & iconfont & permission control & lint
-
-**Live demo:** http://panjiachen.github.io/vue-admin-template
+#### 项目名称：vue-admin
 
 
-**The current version is `v4.0+` build on `vue-cli`. If you want to use the old version , you can switch branch to [tag/3.11.0](https://github.com/PanJiaChen/vue-admin-template/tree/tag/3.11.0), it does not rely on `vue-cli`**
 
-## Build Setup
+#### 运行条件
 
-
-```bash
-# clone the project
-git clone https://github.com/PanJiaChen/vue-admin-template.git
-
-# enter the project directory
-cd vue-admin-template
-
-# install dependency
-npm install
-
-# develop
-npm run dev
+```
+安装依赖：npm install
+本地开发 启动项目：npm run dev
 ```
 
-This will automatically open http://localhost:9528
 
-## Build
 
-```bash
-# build for test environment
-npm run build:stage
+#### 技术架构
 
-# build for production environment
-npm run build:prod
+```
+😄Element UI & 🤭axios & 🙂vue-router & 😊vuex 
 ```
 
-## Advanced
+
+
+#### 目录结构
 
 ```bash
-# preview the release environment effect
-npm run preview
+├── build                                               -------------------    # 构建相关
+├── mock                                                -------------------    # 项目mock 模拟数据
+├── public                                              -------------------    # 静态资源
+│   │── logo.ico                                        -------------------    # 页面titile icon,配置在index.html
+│   └── index.html                                      -------------------    # html模板
+├── src                                                 ---------------    # 源代码
+│   ├── api                                             -------------------    # 所有请求文件
+│		│── xxx.api.js                                  ---------------    # 单个请求文件
+│   	└── index.js                                    ---------------    # 请求集合，挂载到vue中
+│   ├── assets                                          ---------------    # 主题 字体等静态资源
+│   ├── components                                      ---------------    # 全局公用组件
+│   ├── configs                                         ---------------    # 表格配置等 
+│   ├── echartConfig                                    ---------------    # echarts图表等
+│   ├── icons                                           ---------------    # 项目所有 svg icons 
+│   ├── lang                                            ---------------    # 国际化 language
+│   ├── layout                                          ---------------    # 全局 layout
+│   ├── router                                          ---------------    # 路由
+│   ├── render                                          ---------------    # 渲染器相关文件
+│       ├── index.js                                    ---------------    # VXE渲染器注册文件
+│       ├── handleFormEvent.js                          ---------------    # form表单注册事件
+│   ├── store                                           ---------------    # vuex状态管理
+│   ├── styles                                          ---------------    # 全局样式
+│		│── xxx.css		                                ---------------    # 模块样式
+│   	└── index.scss                                  ---------------    # 样式集合，挂载到vue中
+│   ├── utils                                           ---------------    # 全局公用方法
+│   ├── views                                           ---------------    # 所有页面
+│		│── dashboard	                                ---------------    # 首页
+│   	└── login                                       ---------------    # 登录
+│   	└── permission                                  ---------------    # 权限模块
+│   ├── settings.js                                     ---------------    # 项目配置,可更改页面title
+│   ├── App.vue                                         ---------------    # 入口页面
+│   ├── main.js                                         ---------------    # 入口文件 加载组件 初始化等
+│   └── permission.js                                   ---------------    # 权限管理（登录的校验和登录后的路由跳转）    
+├── tests                                               ---------------    # 测试
+├── .env.development                                    ---------------    # 开发环境变量配置
+├── .env.production                                     ---------------    # 生产环境变量配置
+├── .env.staging                                        ---------------    # 测试环境变量配置
+├── .eslintrc.js                                        ---------------    # eslint 配置项
+├── .babelrc                                            ---------------    # babel-loader 配置
+├── .travis.yml                                         ---------------    # 自动化CI配置
+├── vue.config.js                                       ---------------    # vue-cli 配置
+├── postcss.config.js                                   ---------------    # postcss 配置
+├── package.json                                        ---------------    # 依赖包
+├── .gitignore                                          ---------------    # 配置git管理忽略文件
+├── .travis.yml                                         ---------------    # travis配置文件,代码提交后自动构建
+├── .babel.config.js                                    ---------------    # babel语法编译   
+└── postcss.config.js                                   ---------------    # CSS预处理器
+```                                                 
 
-# preview the release environment effect + static resource analysis
-npm run preview -- --report
 
-# code format check
-npm run lint
 
-# code format check and auto fix
-npm run lint -- --fix
+#### 参考文档
+
+```
+vue-element-admin文档 ： https://panjiachen.github.io/vue-element-admin-site/zh/guide/ 
+
+vxe-table文档：https://xuliangzhan_admin.gitee.io/vxe-table/#/table/start/install
 ```
 
-Refer to [Documentation](https://panjiachen.github.io/vue-element-admin-site/guide/essentials/deploy.html) for more information
+#### 相关命令（路由可手动添加）
 
-## Demo
+```
+配置表格字段：                                 gfc addConfig xxx   对应路径：src>config>xxx
+删除config中xxx文件：                          gfc delConfig xxx
+接口集成                                       gfc genApi -url 接口地址 -no  (导入导出下载自己手动生成)
+添加一级路由  src>views>文件夹名称              gfc addview 文件夹名称 
+二级路由                                       gfc addCview 文件名 -pr 文件夹名  -dist src/views/文件夹名/文件名
 
-![demo](https://github.com/PanJiaChen/PanJiaChen.github.io/blob/master/images/demo.gif)
-
-## Extra
-
-If you want router permission && generate menu by user roles , you can use this branch [permission-control](https://github.com/PanJiaChen/vue-admin-template/tree/permission-control)
-
-For `typescript` version, you can use [vue-typescript-admin-template](https://github.com/Armour/vue-typescript-admin-template) (Credits: [@Armour](https://github.com/Armour))
-
-## Related Project
-
-- [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
-
-- [electron-vue-admin](https://github.com/PanJiaChen/electron-vue-admin)
-
-- [vue-typescript-admin-template](https://github.com/Armour/vue-typescript-admin-template)
-
-- [awesome-project](https://github.com/PanJiaChen/vue-element-admin/issues/2312)
-
-## Browsers support
-
-Modern browsers and Internet Explorer 10+.
-
-| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari |
-| --------- | --------- | --------- | --------- |
-| IE10, IE11, Edge| last 2 versions| last 2 versions| last 2 versions
-
-## License
-
-[MIT](https://github.com/PanJiaChen/vue-admin-template/blob/master/LICENSE) license.
-
-Copyright (c) 2017-present PanJiaChen
+```

@@ -8,6 +8,7 @@
  * @param {string} cFormat
  * @returns {string | null}
  */
+
 export function parseTime(time, cFormat) {
   if (arguments.length === 0 || !time) {
     return null
@@ -115,3 +116,44 @@ export function param2Obj(url) {
   })
   return obj
 }
+
+export function flatten(arr) {
+  var result = [];
+  for (var i = 0, len = arr.length; i < len; i++) {
+      if (Array.isArray(arr[i])) {
+          result = result.concat(flatten(arr[i]))
+      }
+      else {
+          result.push(arr[i])
+      }
+  }
+  return result;
+}
+export function getEndRow(arr)  {
+  var result = [];
+  console.log(arr)
+  for (var i = 0, len = arr.length; i < len; i++) {
+     if(arr[i].children){
+      result = result.concat(flatten(arr[i].children))
+     }else{
+      result.push(arr[i].title)
+     }
+  }
+  return result
+}
+export function xhrequest(url, callback) {
+  //创建XMLHttpRequest对象
+  var xhr = new XMLHttpRequest();
+  //前两个参数固定，第三个参数true时是异步，false时是同步
+  xhr.open("get", url, true);
+  //选定输出格式为blob格式
+  xhr.responseType = "blob";
+  //onload后回调this本身  onload本身不携带参数
+  xhr.onload = function() {
+    callback(this);
+  };
+  //关闭xhr  一定要加
+  xhr.send();
+}
+
+

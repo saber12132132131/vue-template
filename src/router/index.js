@@ -42,7 +42,8 @@ export const constantRoutes = [
       meta: { title: '首页', icon: 'dashboard', noCache: true,
         affix: true }
     }]
-  },
+  }, 
+
   {
     path: '/permisson',
     component: Layout,
@@ -77,14 +78,21 @@ export const constantRoutes = [
   {
     path: '/table',
     component: Layout,
-    redirect: '/table/index',
+    redirect: '/table/table1',
+    meta: { title: '表格模板', icon: 'tab' },
     hidden: false,
     children: [
       {
-        path: 'index',
-        component: () => import('@/views/table/index'),
-        name: 'Profile',
-        meta: { title: '表格', icon: 'table' }
+        path: '/table/table1',
+        name: 'tableDemo',
+        component: () => import('@/views/table/table1'),
+        meta: { title: '表格1' }
+      },
+      {
+        path: '/table/table2',
+        name: 'table2',
+        component: () => import('@/views/table/table2'),
+        meta: { title: '表格2'}
       }
     ]
   },

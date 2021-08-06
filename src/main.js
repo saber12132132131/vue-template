@@ -4,10 +4,12 @@ import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import '../src/assets/style/iconFont.scss' //公用样式引入
+import 'vxe-table/lib/style.css'
 // import locale from 'element-ui/lib/locale/lang/en' // lang i18n
 
 import '@/styles/index.scss' // global css
-
+import api from "@/api"
 import App from './App'
 import store from './store'
 import router from './router'
@@ -15,6 +17,11 @@ import router from './router'
 import '@/icons' // icon
 import '@/permission' // permission control
 import i18n from './lang' // Internationalization
+import 'xe-utils'
+import VXETable from './render'
+import moment from 'moment'
+
+
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api
@@ -36,8 +43,11 @@ if (process.env.NODE_ENV === 'production') {
 // Vue.use(ElementUI, { locale })
 // 如果想要中文版 element-ui，按如下方式声明
 Vue.use(ElementUI)
-
+Vue.use(VXETable)
+Vue.prototype.$XModal = VXETable.modal
+Vue.prototype.$api =api
 Vue.config.productionTip = false
+Vue.prototype.$moment = moment;
 
 new Vue({
   el: '#app',
